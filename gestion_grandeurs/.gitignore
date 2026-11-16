@@ -1,0 +1,5 @@
+firebase_private_certif.json
+db.sqlite3
+__pycache__/
+*.pyc
+.venv/
