@@ -1,4 +1,5 @@
 import json
+import os
 
 import firebase_admin
 from asgiref.sync import sync_to_async
@@ -6,11 +7,16 @@ from django.apps import apps
 from django.conf import settings
 from django.utils.dateparse import parse_datetime
 from firebase_admin import credentials, db
-
+import os
 # ---------- Firebase : initialisation unique ----------
 if not firebase_admin._apps:
     firebase_admin.initialize_app(
-        credentials.Certificate(str(settings.BASE_DIR / "firebase_private_certif.json")),
+        credentials.Certificate(
+            os.environ.get(
+                "FIREBASE_CERT_PATH",
+                str(settings.BASE_DIR / "firebase_private_certif.json"),
+            )
+        ),
         {"databaseURL": "https://gestion-grandeurs-a1802-default-rtdb.firebaseio.com"},
     )
 

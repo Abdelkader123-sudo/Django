@@ -3,3 +3,9 @@ db.sqlite3
 __pycache__/
 *.pyc
 .venv/
+.env
+secrets/
+.venv*/
+__pycache__/
+db.sqlite3
+firebase_private_certif.json
